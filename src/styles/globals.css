@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root{
+    --medium-grey: #6D6E76;
+    --secondary-100:  #E8E8EA;
+    --secondary-200: #DCDDDF;
+    --secondary-400: #97989F;
+    --secondary-50: #F6F6F7;
+    --secondary-500: #696A75;
+}
