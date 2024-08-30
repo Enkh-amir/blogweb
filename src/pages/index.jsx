@@ -2,8 +2,10 @@ import { useState } from "react";
 
 export default function Main() {
   return (
-    <div>
-      <div>project start 2</div>
-    </div>
+    <main>
+      <header></header>
+      <div></div>
+      <footer></footer>
+    </main>
   );
 }
