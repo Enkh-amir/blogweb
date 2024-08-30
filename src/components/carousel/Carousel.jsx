@@ -39,6 +39,7 @@ export const Carousel = () => {
   };
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
+    console.log(isLastSlide);
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     console.log(newIndex);
     setCurrentIndex(newIndex);

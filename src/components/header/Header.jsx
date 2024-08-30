@@ -2,7 +2,7 @@ import { BlogIcon } from "../../../public/svg/BlogIcon";
 
 export const Header = () => {
   return (
-    <header className="container py-8 justify-between flex">
+    <header className="w-[1216px] py-8 justify-between flex">
       <BlogIcon/>
       <div className="flex gap-10 justify-center items-center">
         <button className="text-[#3B3C4A]">Home</button>
