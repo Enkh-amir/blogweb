@@ -11,3 +11,9 @@
   --secondary-50: #f6f6f7;
   --secondary-500: #696a75;
 }
+.cate-button:hover{
+ color: #D4A373;
+}
+.active{
+  color: #D4A373;
+}

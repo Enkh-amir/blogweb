@@ -16,7 +16,10 @@ module.exports = {
       },
       fontFamily: {
         wsans: ["Work Sans", "sans-serif"]
-      }
+      },
+      colors: {
+        'custom-blue': 'rgba(75, 107, 251, 0.05)',
+      },
     },
   },
   plugins: [],
