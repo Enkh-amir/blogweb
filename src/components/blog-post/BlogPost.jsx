@@ -125,13 +125,16 @@ export const BlogPost = () => {
         <div className="items w-[1222px] flex flex-wrap gap-5">
           {filteredItems.map((item, idx) => {
             return (
-              <div key={`items-${idx}`} className="">
-                <div className="w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] border-[#E8E8EA]">
+              <div key={`items-${idx}`} className="blog-cont">
+                <div className="read-more-img w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] border-[#E8E8EA]">
                   <img
                     src={item.url}
                     alt=""
-                    className="w-[360px] h-[240px] rounded-md object-cover "
+                    className="w-[360px] h-[240px] rounded-md object-cover relative"
                   />
+                  <div className="absolute read-more-button">
+                    <button>Read more</button>
+                  </div>
                   <div className="flex flex-col p-2 w-[344px] gap-4 ">
                     <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
                       {item.title}

@@ -17,3 +17,18 @@
 .active{
   color: #D4A373;
 }
+.read-more-button{
+  opacity: 0;
+}
+.read-more-img{
+
+}
+.blog-cont:hover img{
+  transition-duration: 500ms;
+  object-fit: cover;
+  transform: scale(1.1);
+  filter: brightness(0.3);
+}
+.blog-cont:hover button{
+  opacity: 1;
+}

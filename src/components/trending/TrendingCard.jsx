@@ -1,7 +1,7 @@
 export const TrendingCard = ({ bg, title, content }) => {
   return (
     <div
-      className="bg-lightgray bg-cover bg-no-repeat w-72 h-80 rounded-xl flex flex-col justify-end gap-4 p-7"
+      className=" bg-lightgray bg-cover bg-no-repeat w-72 h-80 rounded-xl flex flex-col justify-end gap-4 p-7"
       style={{
         backgroundImage: `linear-gradient(0deg, rgba(20, 22, 36, 0.40) 0%, rgba(20, 22, 36, 0.40) 100%), url(${bg})`,
         backgroundSize: "cover",
