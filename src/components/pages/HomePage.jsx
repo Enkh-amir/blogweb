@@ -1,5 +1,6 @@
 import { BlogPost } from "../blog-post/BlogPost";
 import { Carousel } from "../carousel/Carousel";
+import { FooterHome } from "../footer/FooterHome";
 import { Header } from "../header/Header";
 import { TrendingCards } from "../trending/TrendingCards";
 
@@ -9,7 +10,8 @@ export default function HomePage() {
       <Header />
       <Carousel />
       <TrendingCards />
-      <BlogPost/>
+      <BlogPost />
+      <FooterHome />
     </div>
   );
 }

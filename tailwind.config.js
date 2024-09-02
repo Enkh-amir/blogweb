@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,11 +14,24 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        wsans: ["Work Sans", "sans-serif"]
+        wsans: ["Work Sans", "sans-serif"],
       },
       colors: {
-        'custom-blue': 'rgba(75, 107, 251, 0.05)',
+        "custom-blue": "rgba(75, 107, 251, 0.05)",
       },
+      plugins: [
+        function ({ addUtilities }) {
+          addUtilities({
+            ".line-clamp-3": {
+              display: "-webkit-box",
+              WebkitLineClamp: "3",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            },
+          });
+        },
+      ],
     },
   },
   plugins: [],

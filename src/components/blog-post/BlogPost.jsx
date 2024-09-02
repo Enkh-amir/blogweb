@@ -4,66 +4,66 @@ import React from "react";
 
 const BlogPostCardDara = [
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://i0.wp.com/news.qoo-app.com/en/wp-content/uploads/sites/3/2023/06/QooApp_KonoSuba-S3.jpg",
     title: "Comedy",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "KonoSuba: God's Blessing on This Wonderful World!,[Jp. 1] often referred to simply as KonoSuba, is a Japanese light novel series written by Natsume Akatsuki and illustrated by Kurone Mishima.",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://images.alphacoders.com/116/1163408.jpg",
     title: "Action",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "Hunter × Hunter (pronounced hunter hunter) is a Japanese manga series written and illustrated by Yoshihiro Togashi.",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://external-preview.redd.it/tgMcNJDO3Bsh8SwLh2ycxdbJPJosxGD9y4JwM59G148.jpg?auto=webp&s=56896a16b5e8e3f7217e7a768ea6cadd456533ae",
     title: "Action",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "Devilman Crybaby is a 2018 Japanese original net animation (ONA) series based on Go Nagai's manga series Devilman. ",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://cdn.theanimegallery.com/theanimegallery/6200e677-7212-4cd1-8e3b-409e0c589514-chainsaw-man-wallpaper-4k.webp",
     title: "Fantasy",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "Chainsaw Man (Japanese: チェンソーマン, Hepburn: Chensō Man) is a Japanese manga series written and illustrated by Tatsuki Fujimoto. ",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://images6.alphacoders.com/712/712763.png",
     title: "Fantasy",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "Re:Zero − Starting Life in Another World (Japanese: Re:ゼロから始める異世界生活, Hepburn: Re:Zero kara Hajimeru Isekai Seikatsu), often referred to simply as Re:Zero and also known as Re: Life in a different world from zero",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://images3.alphacoders.com/859/thumb-1920-859804.png",
     title: "Fantasy",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "My Hero Academia (Japanese: 僕のヒーローアカデミア, Hepburn: Boku no Hīrō Akademia) is a Japanese manga series written and illustrated by Kōhei Horikoshi.",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://preview.redd.it/oiwm7glsh0p91.png?auto=webp&s=9ac5fcbc887187a2a9910d961d4611378c88217f",
     title: "Adventure",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "Cyberpunk: Edgerunners (Japanese: サイバーパンク エッジランナーズ, Hepburn: Saibāpanku Edjirannāzu) is a Japanese-Polish cyberpunk original net animation (ONA) miniseries based on the video game Cyberpunk 2077 by Polish studio CD Projekt Red.",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://wallpapers.com/images/featured/one-piece-c0pujiakubq5rwas.jpg",
     title: "Adventure",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "One Piece (stylized in all caps) is a Japanese manga series written and illustrated by Eiichiro Oda.",
     date: "August 20, 2022",
   },
   {
-    url: "https://motionbgs.com/media/2404/house-on-island-spirited-away.jpg",
+    url: "https://4kwallpapers.com/images/wallpapers/vinland-saga-yellow-3840x2160-14818.jpg",
     title: "Drama",
     content:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
+      "Vinland Saga (Japanese: ヴィンランド・サガ, Hepburn: Vinrando Saga) is a Japanese historical manga series written and illustrated by Makoto Yukimura.",
     date: "August 20, 2022",
   },
 ];
@@ -130,13 +130,13 @@ export const BlogPost = () => {
                   <img
                     src={item.url}
                     alt=""
-                    className="w-[360px] h-[240px] rounded-md"
+                    className="w-[360px] h-[240px] rounded-md object-cover "
                   />
                   <div className="flex flex-col p-2 w-[344px] gap-4 ">
                     <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
                       {item.title}
                     </div>
-                    <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans ">
+                    <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
                       {item.content}
                     </div>
                     <div className="font-wsans font-normal text-base text-[#97989F] ">

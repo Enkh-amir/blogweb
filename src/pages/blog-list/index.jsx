@@ -1,3 +1,3 @@
 export default function BlogCard() {
-  return <div>aa</div>;
+  return <div> </div>;
 }

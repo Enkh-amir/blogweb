@@ -6,7 +6,7 @@ export const Header = () => {
       <BlogIcon/>
       <div className="flex gap-10 justify-center items-center">
         <button className="text-[#3B3C4A]">Home</button>
-        <button className="text-[#3B3C4A]">Blog</button>
+        <button className="text-[#3B3C4A]">Anime</button>
         <button className="text-[#3B3C4A]">Contact</button>
       </div>
       <div className="py-2 px-4 justify-center gap-3 items-center rounded-md bg-[#F4F4F5] flex">
