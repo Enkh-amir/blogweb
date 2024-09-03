@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { filterItemsM } from "./filterItems";
 import React from "react";
 import Link from "next/link";
 
-const BlogPostCardDara = [
+const BlogPostCardData = [
   {
     url: "https://i0.wp.com/news.qoo-app.com/en/wp-content/uploads/sites/3/2023/06/QooApp_KonoSuba-S3.jpg",
     title: "Comedy",
@@ -133,97 +132,88 @@ const BlogPostCardDara = [
 ];
 
 export const BlogPost = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredItems, setFilteredItems] = useState(BlogPostCardDara);
-  const [items, setItems] = useState(BlogPostCardDara);
+  const [items, setItems] = useState(BlogPostCardData);
   const [visible, setVisible] = useState(9);
+  const [filteredItems, setFilteredItems] = useState(BlogPostCardData);
+  const [selectedFilters, setSelectedFilters] = useState("All");
+
   let filters = ["All", "Action", "Fantasy", "Adventure", "Drama", "Comedy"];
-  const handleFilterButtonClick = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      let filters = selectedFilters.filter((el) => el !== selectedCategory);
-      setSelectedFilters(filters);
+
+  useEffect(() => {
+    if (selectedFilters === "All") {
+      setFilteredItems(items);
     } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
+      const newFilteredItems = items.filter(
+        (item) => item.title === selectedFilters
+      );
+      setFilteredItems(newFilteredItems);
     }
+  }, [selectedFilters, items]);
+
+  const handleFilterButtonClick = (category) => {
+    setSelectedFilters(category);
   };
 
   const showMoreItems = () => {
-    setVisible((preValue) => preValue + 6);
+    setVisible((prevVisible) => prevVisible + 9);
   };
 
-  useEffect(() => {
-    filterItems();
-  }, [selectedFilters]);
-
-  const filterItems = () => {
-    if (selectedFilters.length > 0) {
-      let tempItems = selectedFilters.map((selectedCategory) => {
-        let temp = BlogPostCardDara.filter(
-          (item) => item.title === selectedCategory
-        );
-        return temp;
-      });
-      setFilteredItems(tempItems.flat());
-    } else {
-      setFilteredItems([...BlogPostCardDara]);
-    }
-  };
   return (
     <div className="w-[1216px] flex flex-col ">
       <div className="flex flex-col gap-8">
         <div className="font-wsans font-bold text-2xl">All Anime</div>
         <div className="flex justify-between">
           <div className="flex gap-5">
-            {filters.map((category, idx) => {
-              return (
-                <button
-                  onClick={() => handleFilterButtonClick(category)}
-                  className={`button ${
-                    selectedFilters?.includes(category) ? "active" : ""
-                  } text-[#495057] font-wsans font-bold text-xs hover:text-[#D4A373]`}
-                  key={`filters-${idx}`}
-                >
-                  {category}
-                </button>
-              );
-            })}
+            {filters.map((category, idx) => (
+              <button
+                onClick={() => handleFilterButtonClick(category)}
+                className={`button ${
+                  selectedFilters === category ? "active" : ""
+                } text-[#495057] font-wsans font-bold text-xs hover:text-[#D4A373]`}
+                key={`filters-${idx}`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
-          <button className="text-[#495057] font-wsans font-bold text-xs ">
-            View All
-          </button>
+          <Link href="/blog-list">
+            <button className="text-[#495057] font-wsans font-bold text-xs ">
+              View All
+            </button>
+          </Link>
         </div>
         <div className="items w-[1222px] flex flex-wrap gap-5">
-          {filteredItems.slice(0, visible).map((item, idx) => {
-            return (
-              <div key={`items-${idx}`} className="">
-                <div className="w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] border-[#E8E8EA]">
-                  <img
-                    src={item.url}
-                    alt=""
-                    className="w-[360px] h-[240px] rounded-md object-cover "
-                  />
-                  <div className="flex flex-col p-2 w-[344px] gap-4 ">
-                    <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
-                      {item.title}
-                    </div>
-                    <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
-                      {item.content}
-                    </div>
-                    <div className="font-wsans font-normal text-base text-[#97989F] ">
-                      {item.date}
-                    </div>
+          {filteredItems.slice(0, visible).map((item, idx) => (
+            <div key={`items-${idx}`} className="">
+              <div className="w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] border-[#E8E8EA]">
+                <img
+                  src={item.url}
+                  alt=""
+                  className="w-[360px] h-[240px] rounded-md object-cover "
+                />
+                <div className="flex flex-col p-2 w-[344px] gap-4 ">
+                  <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
+                    {item.title}
+                  </div>
+                  <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
+                    {item.content}
+                  </div>
+                  <div className="font-wsans font-normal text-base text-[#97989F] ">
+                    {item.date}
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
           <div className="w-full flex justify-center mt-11">
-            <button
-              className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border "
-              onClick={showMoreItems}
-            >
-              Load More
-            </button>
+            {BlogPostCardData.length > visible ? (
+              <button
+                className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border "
+                onClick={showMoreItems}
+              >
+                Load More
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

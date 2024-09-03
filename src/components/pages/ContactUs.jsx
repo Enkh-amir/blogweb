@@ -36,20 +36,21 @@ export const ContactUsPart = () => {
       <div className="w-full bg-[#F6F6F7] pl-[35px] pr-[130px] py-[27px] rounded-[10px] gap-6 flex flex-col ">
         <div className="text-black font-wsans font-semibold text-lg ">Leave a Message</div>
         <div className="flex flex-col gap-4">
-          <div className="flex gap-14">
-            <input className="s-input w-[225px] px-3 py-1 " placeholder="Your Name" type="text" />
-            <input className="s-input w-[225px] px-3 py-1 " placeholder="Your Email" type="text" />
+          <div className="flex justify-between">
+            <input className="s-input w-[45%] px-3 py-1 " placeholder="Your Name" type="text" />
+            <input className="s-input w-[45%] px-3 py-1 " placeholder="Your Email" type="text" />
           </div>
           <div>
             <input className="s-input w-full px-3 py-1" placeholder="Subject" type="text" />
           </div>
           <div>
-            <input
-              className="s-input w-full h-[134px] "
+            {/* <input
+              className="s-input w-full text-base h-[134px] "
               placeholder="Write a message"
               type="text"
-              
-            />
+
+            /> */}
+            <textarea name="" className="w-full rounded-md h-28 resize-none p-3" placeholder="Write a message" id=""></textarea>
           </div>
         </div>
         <button className="py-[10px] px-4 bg-[#4B6BFB] rounded-md w-max text-white font-wsans text-sm font-medium ">Send Message</button>
