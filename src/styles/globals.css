@@ -11,9 +11,15 @@
   --secondary-50: #f6f6f7;
   --secondary-500: #696a75;
 }
-.cate-button:hover{
- color: #D4A373;
+.cate-button:hover {
+  color: #d4a373;
 }
-.active{
-  color: #D4A373;
+.active {
+  color: #d4a373;
+}
+.s-input {
+  border-radius: 5px;
+  border: 1px solid #dcdddf;
+
+  background: var(--White, #fff);
 }

@@ -38,7 +38,7 @@ export const FooterHome = () => {
       <div className="w-[1216px] flex justify-between border-t border-[#E8E8EA] p-5 ">
         <div className="flex gap-2">
           <div>
-            <svg
+            <svg    
               xmlns="http://www.w3.org/2000/svg"
               width="48"
               height="49"

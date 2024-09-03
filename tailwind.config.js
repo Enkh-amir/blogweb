@@ -18,6 +18,7 @@ module.exports = {
       },
       colors: {
         "custom-blue": "rgba(75, 107, 251, 0.05)",
+        "custom-border": "rgba(105, 106, 117, 0.30)",
       },
       plugins: [
         function ({ addUtilities }) {

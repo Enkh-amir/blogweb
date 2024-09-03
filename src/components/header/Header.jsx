@@ -1,13 +1,21 @@
 import { BlogIcon } from "../../../public/svg/BlogIcon";
-
+import Link from "next/link";
 export const Header = () => {
   return (
     <header className="w-[1216px] py-8 justify-between flex">
-      <BlogIcon/>
+      <Link href="/">
+        <BlogIcon />
+      </Link>
       <div className="flex gap-10 justify-center items-center">
-        <button className="text-[#3B3C4A]">Home</button>
-        <button className="text-[#3B3C4A]">Anime</button>
-        <button className="text-[#3B3C4A]">Contact</button>
+        <Link href="/">
+          <button className="text-[#3B3C4A]">Home</button>
+        </Link>
+        <Link href="/blog-list">
+          <button className="text-[#3B3C4A]">Anime</button>
+        </Link>
+        <Link href="/contact-us">
+          <button className="text-[#3B3C4A]">Contact</button>
+        </Link>
       </div>
       <div className="py-2 px-4 justify-center gap-3 items-center rounded-md bg-[#F4F4F5] flex">
         <input
