@@ -17,9 +17,3 @@
 .active {
   color: #d4a373;
 }
-.s-input {
-  border-radius: 5px;
-  border: 1px solid #dcdddf;
-
-  background: var(--White, #fff);
-}

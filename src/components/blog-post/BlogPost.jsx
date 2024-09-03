@@ -195,28 +195,26 @@ export const BlogPost = () => {
         <div className="items w-[1222px] flex flex-wrap gap-5">
           {filteredItems.slice(0, visible).map((item, idx) => {
             return (
-              <Link href="/single-post">
-                <div key={`items-${idx}`} className="">
-                  <div className="w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] border-[#E8E8EA]">
-                    <img
-                      src={item.url}
-                      alt=""
-                      className="w-[360px] h-[240px] rounded-md object-cover "
-                    />
-                    <div className="flex flex-col p-2 w-[344px] gap-4 ">
-                      <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
-                        {item.title}
-                      </div>
-                      <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
-                        {item.content}
-                      </div>
-                      <div className="font-wsans font-normal text-base text-[#97989F] ">
-                        {item.date}
-                      </div>
+              <div key={`items-${idx}`} className="">
+                <div className="w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] border-[#E8E8EA]">
+                  <img
+                    src={item.url}
+                    alt=""
+                    className="w-[360px] h-[240px] rounded-md object-cover "
+                  />
+                  <div className="flex flex-col p-2 w-[344px] gap-4 ">
+                    <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
+                      {item.title}
+                    </div>
+                    <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
+                      {item.content}
+                    </div>
+                    <div className="font-wsans font-normal text-base text-[#97989F] ">
+                      {item.date}
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
           <div className="w-full flex justify-center mt-11">
