@@ -2,19 +2,47 @@ import { useEffect, useState } from "react";
 import React from "react";
 import Link from "next/link";
 
-export const BlogPost = (BlogPostCardData) => {
+export const BlogPost = ({ BlogPostCardData }) => {
   const [visible, setVisible] = useState(9);
-  const [filteredItems, setFilteredItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(BlogPostCardData);
   const [selectedFilters, setSelectedFilters] = useState("All");
-  console.log(BlogPostCardData); 
+  const publishedDate = new Date(BlogPostCardData.published_at);
+  const generatMonth = (month) => {
+    switch (month) {
+      case 1:
+        return "January";
+      case 2:
+        return "February";
+      case 3:
+        return "March";
+      case 4:
+        return "April";
+      case 5:
+        return "May";
+      case 6:
+        return "June";
+      case 7:
+        return "July";
+      case 8:
+        return "August";
+      case 9:
+        return "September";
+      case 10:
+        return "October";
+      case 11:
+        return "November";
+      case 12:
+        return "December";
+    }
+  };
 
-  let filters = [
+  const filters = [
     "All",
     "devchallenge",
-    "Fantasy",
-    "Adventure",
-    "Drama",
-    "Comedy",
+    "watercooler",
+    "career",
+    "weeklyretro",
+    "top7",
   ];
 
   useEffect(() => {
@@ -27,9 +55,10 @@ export const BlogPost = (BlogPostCardData) => {
       setFilteredItems(newFilteredItems);
     }
   }, [selectedFilters, BlogPostCardData]);
-  
+
   const handleFilterButtonClick = (category) => {
     setSelectedFilters(category);
+    setVisible(9); // Reset visible count when a filter is selected
   };
 
   const showMoreItems = () => {
@@ -37,7 +66,7 @@ export const BlogPost = (BlogPostCardData) => {
   };
 
   return (
-    <div className="w-[1216px] flex flex-col ">
+    <div className="w-[1216px] flex flex-col">
       <div className="flex flex-col gap-8">
         <div className="font-wsans font-bold text-2xl">All Anime</div>
         <div className="flex justify-between">
@@ -61,26 +90,28 @@ export const BlogPost = (BlogPostCardData) => {
           </Link>
         </div>
         <div className="items w-[1222px] flex flex-wrap gap-5">
-          {filteredItems.map((item, idx) => (
-            <Link href={`/${item.id}`}>
-              <div key={`items-${idx}`} className="">
-                <div className="w-max flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden border-[#E8E8EA]">
+          {filteredItems.slice(0, visible).map((item) => (
+            <Link href={`/${item.id}`} key={item.id}>
+              <div className="">
+                <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden border-[#E8E8EA]">
                   <div className="img-container">
                     <img
                       src={item.cover_image}
-                      alt=""
-                      className="w-[360px] h-[240px] read-more-img rounded-md object-cover "
+                      alt={item.title}
+                      className="w-[360px] h-[240px] read-more-img rounded-md object-cover"
                     />
                   </div>
-                  <div className="flex flex-col p-2 w-[344px] gap-4 ">
-                    <div className=" px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB] ">
+                  <div className="flex flex-col p-2 w-[344px] h-full justify-between">
+                    <div className="px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB]">
                       {item.tag_list[0]}
                     </div>
                     <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
                       {item.title}
                     </div>
-                    <div className="font-wsans font-normal text-base text-[#97989F] ">
-                      {item.readable_publish_date}
+                    <div className="font-wsans font-normal text-base text-[#97989F]">
+                      {publishedDate.getFullYear()}-
+                      {generatMonth(publishedDate.getMonth())}-
+                      {publishedDate.getDay()}
                     </div>
                   </div>
                 </div>
@@ -89,14 +120,14 @@ export const BlogPost = (BlogPostCardData) => {
           ))}
 
           <div className="w-full flex justify-center mt-11">
-            {BlogPostCardData.length > visible ? (
+            {visible < filteredItems.length && (
               <button
-                className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border load-more "
+                className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border load-more"
                 onClick={showMoreItems}
               >
                 Load More
               </button>
-            ) : null}
+            )}
           </div>
         </div>
       </div>
