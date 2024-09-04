@@ -5,10 +5,10 @@ import { Twitter } from "../../../public/svg/TwitterSvg";
 
 export const FooterHome = () => {
   return (
-    <div className="w-full py-16 flex gap-6 flex-col items-center bg-[#F6F6F7]">
+    <div className="w-[100%] py-16 flex gap-6 flex-col items-center bg-[#F6F6F7]">
       <div className="w-[1216px] flex justify-between">
         <div className="w-[25%] flex gap-6  flex-col">
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3"> 
             <div className="text-[#181A2A] text-lg font-wsans font-semibold ">
               About
             </div>

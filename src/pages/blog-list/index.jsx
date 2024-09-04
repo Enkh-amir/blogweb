@@ -7,7 +7,7 @@ export default function BlogCard() {
     <div className="w-full flex gap-12 items-center flex-col">
       <Header />
       <div className="w-[1222px] flex font-wsans text-2xl font-bold text-[#181A2A] ">All Blog Post</div>
-      <div className="flex flex-col gap-20">
+      <div className="w-full flex flex-col items-center gap-20">
         <BlogListing />
         <FooterHome />
       </div>

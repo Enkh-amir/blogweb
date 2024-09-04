@@ -17,3 +17,26 @@
 .active {
   color: #d4a373;
 }
+
+.nav-item {
+  position: relative;
+  padding: 0 10px;
+}
+.nav-item::after {
+  content: "";
+  position: absolute;
+  background-color: #d4a373;
+  height: 3px;
+  left: 0;
+  width: 0px;
+  bottom: -10px;
+  transition: 0.3s;
+}
+.nav-item:hover::after {
+  width: 100%;
+}
+.load-more:hover{
+  transition: all 0.1s ease-out;
+  border: 1px solid #d4a373;
+  color: #d4a373;
+}
