@@ -6,36 +6,11 @@ export const BlogPost = ({ BlogPostCardData }) => {
   const [visible, setVisible] = useState(9);
   const [filteredItems, setFilteredItems] = useState(BlogPostCardData);
   const [selectedFilters, setSelectedFilters] = useState("All");
-  const publishedDate = new Date(BlogPostCardData.published_at);
-  const generatMonth = (month) => {
-    switch (month) {
-      case 1:
-        return "January";
-      case 2:
-        return "February";
-      case 3:
-        return "March";
-      case 4:
-        return "April";
-      case 5:
-        return "May";
-      case 6:
-        return "June";
-      case 7:
-        return "July";
-      case 8:
-        return "August";
-      case 9:
-        return "September";
-      case 10:
-        return "October";
-      case 11:
-        return "November";
-      case 12:
-        return "December";
-    }
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
   };
-
   const filters = [
     "All",
     "devchallenge",
@@ -93,7 +68,7 @@ export const BlogPost = ({ BlogPostCardData }) => {
           {filteredItems.slice(0, visible).map((item) => (
             <Link href={`/${item.id}`} key={item.id}>
               <div className="">
-                <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden border-[#E8E8EA]">
+                <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden bg-white border-[#E8E8EA]">
                   <div className="img-container">
                     <img
                       src={item.cover_image}
@@ -109,9 +84,7 @@ export const BlogPost = ({ BlogPostCardData }) => {
                       {item.title}
                     </div>
                     <div className="font-wsans font-normal text-base text-[#97989F]">
-                      {publishedDate.getFullYear()}-
-                      {generatMonth(publishedDate.getMonth())}-
-                      {publishedDate.getDay()}
+                      {formatDate(item.published_at)}
                     </div>
                   </div>
                 </div>

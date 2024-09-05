@@ -1,72 +1,52 @@
 import { useState } from "react";
 import React from "react";
-
-export const Carousel = () => {
-  const slides = [
-    {
-      url: "https://wallpaper.forfun.com/fetch/34/34e2207671976941581bcfbf0c9a6b16.jpeg",
-      tag: "Howl's Moving Castle",
-      date: "November 20, 2004",
-      content: "Howl's Moving Castle (Japanese: ハウルの動く城)",
-    },
-    {
-      url: "https://images8.alphacoders.com/135/1354012.png",
-      tag: "My Neighbor Totoro",
-      date: "April 16, 1988",
-      content: "My Neighbor Totoro (Japanese: となりのトトロ)",
-    },
-    {
-      url: "https://i.pinimg.com/originals/79/66/1c/79661ce094727e32d528874bb9683fae.jpg",
-      tag: "The Wind Rises",
-      date: "July 20, 2013",
-      content: "The Wind Rises (Japanese: 風立ちぬ)",
-    },
-    {
-      url: "https://wallpapercat.com/w/full/1/6/d/138467-3840x2160-desktop-4k-spirited-away-wallpaper-image.jpg",
-      tag: "Spirited Away",
-      date: "July 20, 2001",
-      content: "Spirited Away (Japanese: 千と千尋の神隠し)",
-    },
-  ];
-
+import Link from "next/link";
+export const Carousel = ({ slides = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    console.log(newIndex);
     setCurrentIndex(newIndex);
   };
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
-    console.log(isLastSlide);
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    console.log(newIndex);
     setCurrentIndex(newIndex);
+  };
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
   };
 
   return (
-    <div className="container">
-      <div
-        style={{
-          backgroundImage: `url(${slides[currentIndex].url})`,
-          backgroundSize: `cover`,
-        }}
-        className="h-[600px] rounded-xl duration-200 flex p-3 items-end"
+    <div className="container flex  justify-center items-center flex-col">
+      <Link
+        href={`/${slides[currentIndex]?.id}`}
+        key={slides[currentIndex]?.id}
       >
-        <div className="shadow-md rounded-xl w-[50%] h-[40%] bg-[#FFF] flex flex-col p-10 gap-5 ">
-          <div className="bg-[#4B6BFB] px-[10px] w-max rounded-md text-white text-sm font-medium py-1 ">
-            {slides[currentIndex].tag}
-          </div>
-          <div className="text-[#181A2A] text-4xl font-semibold ">
-            {slides[currentIndex].content}
-          </div>
-          <div className="text-[#97989F] text-base ">
-            {slides[currentIndex].date}
+        <div
+          style={{
+            backgroundImage: `url(${slides[currentIndex]?.cover_image})`,
+            backgroundSize: `cover`,
+          }}
+          className="h-[600px] w-[1216px] rounded-xl duration-200 flex p-3 items-end"
+        >
+          <div className="shadow-md rounded-xl w-[50%] h-[40%] bg-[#FFF] flex flex-col p-10 gap-5 ">
+            <div className="bg-[#4B6BFB] px-[10px] w-max rounded-md text-white text-sm font-medium py-1 ">
+              {slides[currentIndex]?.tag_list[0]}
+            </div>
+            <div className="text-[#181A2A] text-4xl font-semibold ">
+              {slides[currentIndex]?.title}
+            </div>
+            <div className="text-[#97989F] text-base ">
+              {formatDate(slides[currentIndex]?.published_at)}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex justify-end mt-3 gap-2">
+      </Link>
+      <div className="flex justify-end w-[1216px] mt-3 gap-2">
         <button onClick={prevSlide}>
           <svg
             width="40"

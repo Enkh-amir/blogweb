@@ -18,10 +18,10 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-24">
+    <div className="flex flex-col items-center gap-24 relative min-h-screen">
       <Header />
-      <Carousel />
-      <TrendingCards />
+      <Carousel slides={article.slice(20, 30)} />
+      <TrendingCards AnimeCard={article.slice(9, 13)} />
       <BlogPost BlogPostCardData={article} />
       <FooterHome />
     </div>

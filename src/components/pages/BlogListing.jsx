@@ -4,34 +4,10 @@ import React from "react";
 
 export const BlogListing = () => {
   const [article, setArticle] = useState([]);
-  const publishedDate = new Date(article.published_at);
-  const generatMonth = (month) => {
-    switch (month) {
-      case 1:
-        return "January";
-      case 2:
-        return "February";
-      case 3:
-        return "March";
-      case 4:
-        return "April";
-      case 5:
-        return "May";
-      case 6:
-        return "June";
-      case 7:
-        return "July";
-      case 8:
-        return "August";
-      case 9:
-        return "September";
-      case 10:
-        return "October";
-      case 11:
-        return "November";
-      case 12:
-        return "December";
-    }
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
   };
   const fetchData = () => {
     fetch(`https://dev.to/api/articles`)
@@ -65,10 +41,16 @@ export const BlogListing = () => {
               <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
                 {item.title}
               </div>
-              <div className="font-wsans font-normal text-base text-[#97989F]">
-                {publishedDate.getFullYear()}-
-                {generatMonth(publishedDate.getMonth())}-
-                {publishedDate.getDay()}
+              <div className="font-wsans flex gap-5 items-center font-medium text-base text-[#97989F]">
+                <div className="flex gap-3 text-[#97989F] items-center font-wsans text-base font-medium">
+                  <img
+                    src={item.user?.profile_image_90}
+                    className="w-7 h-7 rounded-[50%] "
+                    alt=""
+                  />
+                  <div>{item.user?.name} </div>
+                </div>
+                {formatDate(item.published_at)}
               </div>
             </div>
           </div>
@@ -77,7 +59,7 @@ export const BlogListing = () => {
       <div className="w-full flex justify-center mt-11">
         {article.length > visible ? (
           <button
-            className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border "
+            className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border load-more"
             onClick={showMoreItems}
           >
             Load More

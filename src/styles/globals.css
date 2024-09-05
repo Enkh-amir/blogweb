@@ -35,8 +35,28 @@
 .nav-item:hover::after {
   width: 100%;
 }
-.load-more:hover{
+.load-more:hover {
   transition: all 0.1s ease-out;
   border: 1px solid #d4a373;
   color: #d4a373;
+}
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove any default border */
+  pointer-events: none; /* Prevent interactions with the video */
+}
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Ensure it is behind other content */
+  margin: 0;
+  padding: 0;
 }

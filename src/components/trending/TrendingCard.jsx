@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export const TrendingCard = ({ bg, title, content }) => {
   return (
@@ -10,10 +9,10 @@ export const TrendingCard = ({ bg, title, content }) => {
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-[#4B6BFB] px-[10px] w-max rounded-md text-white text-sm font-medium py-1 ">
+      <div className="bg-[#4B6BFB] px-[10px] w-max  rounded-md text-white text-sm font-medium py-1 ">
         {title}
       </div>
-      <div className="text-white text-lg font-semibold">{content}</div>
+      <div className="text-white text-lg line-clamp-3 font-semibold">{content}</div>
     </div>
   );
 };
