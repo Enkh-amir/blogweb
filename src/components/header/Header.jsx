@@ -11,7 +11,7 @@ export const Header = () => {
           <button className="text-[#3B3C4A] nav-item">Home</button>
         </Link>
         <Link href="/blog-list">
-          <button className="text-[#3B3C4A] nav-item">Anime</button>
+          <button className="text-[#3B3C4A] nav-item">Blog</button>
         </Link>
         <Link href="/contact-us">
           <button className="text-[#3B3C4A] nav-item">Contact</button>
