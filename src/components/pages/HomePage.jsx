@@ -5,7 +5,7 @@ import { Header } from "../header/Header";
 import { TrendingCards } from "../trending/TrendingCards";
 import { useEffect, useState } from "react";
 
-export default function HomePage() {
+export default function   HomePage() {
   const [article, setArticle] = useState([]);
 
   const fetchData = () => {
