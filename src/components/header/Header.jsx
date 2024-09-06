@@ -82,7 +82,6 @@ export const Header = ({ datas = [] }) => {
             />
           </svg>
         </button>
-        {/* Display search results */}
         {searchResults.length > 0 && (
           <div className="absolute top-24 max-h-[500px] overflow-scroll max-w-md mt-2 bg-white border rounded-md shadow-lg z-10">
             <ul>
