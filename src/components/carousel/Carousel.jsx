@@ -28,7 +28,7 @@ export const Carousel = ({ slides = [] }) => {
       >
         <div
           style={{
-            backgroundImage: `url(${slides[currentIndex]?.cover_image})`,
+            background: `linear-gradient(0deg, rgba(20, 22, 36, 0.40) 0%, rgba(20, 22, 36, 0.40) 100%), url(${slides[currentIndex]?.cover_image}) lightgray 50%`,
             backgroundSize: `cover`,
           }}
           className="h-[600px] w-[1216px] rounded-xl duration-200 flex p-3 items-end"
