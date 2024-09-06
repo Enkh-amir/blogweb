@@ -2,12 +2,22 @@ import { FooterHome } from "@/components/footer/FooterHome";
 import { Header } from "@/components/header/Header";
 import { SinglePostPage } from "@/components/pages/SinglePost";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SinglePost = () => {
+  const [article, setArticle] = useState([]);
+
+  const fetchData = () => {
+    fetch(`https://dev.to/api/articles`)
+      .then((response) => response.json())
+      .then((data) => setArticle(data));
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="flex flex-col items-center gap-[90px] ">
-      <Header />
+      <Header datas={article} />
       <SinglePostPage />
       <FooterHome />
     </div>

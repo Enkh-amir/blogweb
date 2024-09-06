@@ -71,20 +71,20 @@ export const BlogPost = ({ BlogPostCardData }) => {
                 <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden bg-white border-[#E8E8EA]">
                   <div className="img-container">
                     <img
-                      src={item.cover_image}
-                      alt={item.title}
+                      src={item?.cover_image}
+                      alt={item?.title}
                       className="w-[360px] h-[240px] read-more-img rounded-md object-cover"
                     />
                   </div>
                   <div className="flex flex-col p-2 w-[344px] h-full justify-between">
                     <div className="px-[10px] py-1 bg-custom-blue w-max font-wsans text-sm font-medium text-[#4B6BFB]">
-                      {item.tag_list[0]}
+                      {item?.tag_list[0]}
                     </div>
                     <div className="text-[#181A2A] text-2xl leading-7 font-medium font-wsans line-clamp-3">
-                      {item.title}
+                      {item?.title}
                     </div>
                     <div className="font-wsans font-normal text-base text-[#97989F]">
-                      {formatDate(item.published_at)}
+                      {formatDate(item?.published_at)}
                     </div>
                   </div>
                 </div>

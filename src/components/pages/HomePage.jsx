@@ -19,7 +19,7 @@ export default function   HomePage() {
 
   return (
     <div className="flex flex-col items-center gap-24 relative min-h-screen">
-      <Header />
+      <Header datas={article} />
       <Carousel slides={article.slice(20, 30)} />
       <TrendingCards AnimeCard={article.slice(9, 13)} />
       <BlogPost BlogPostCardData={article} />

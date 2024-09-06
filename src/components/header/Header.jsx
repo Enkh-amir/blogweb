@@ -1,8 +1,42 @@
+import { useState, useEffect } from "react";
 import { BlogIcon } from "../../../public/svg/BlogIcon";
 import Link from "next/link";
-export const Header = () => {
+
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
+export const Header = ({ datas = [] }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
+  useEffect(() => {
+    if (debouncedSearchQuery.trim() === "") {
+      setSearchResults([]);
+      return;
+    }
+
+    const results = datas.filter((item) =>
+      item.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [debouncedSearchQuery, datas]);
+
   return (
-    <header className="w-[1216px] py-8 justify-between flex">
+    <header className="relative w-[1216px] py-8 justify-between flex">
       <Link href="/">
         <BlogIcon />
       </Link>
@@ -22,6 +56,8 @@ export const Header = () => {
           type="text"
           className="bg-[#F4F4F5] outline-none"
           placeholder="search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <button>
           <svg
@@ -46,6 +82,24 @@ export const Header = () => {
             />
           </svg>
         </button>
+        {/* Display search results */}
+        {searchResults.length > 0 && (
+          <div className="absolute top-24 max-h-[500px] overflow-scroll max-w-md mt-2 bg-white border rounded-md shadow-lg z-10">
+            <ul>
+              {searchResults.length === 0 ? (
+                <li className="py-2 px-4">No results found</li>
+              ) : (
+                searchResults.map((result) => (
+                  <li key={result.id} className="py-2 px-4  hover:bg-gray-200">
+                    <Link href={`/${result.id}`}>
+                      <div>{result.title}</div>
+                    </Link>
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+        )}
       </div>
     </header>
   );
