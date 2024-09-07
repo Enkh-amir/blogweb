@@ -1,4 +1,3 @@
-
 export const TrendingCard = ({ bg, title, content }) => {
   return (
     <div
@@ -12,7 +11,9 @@ export const TrendingCard = ({ bg, title, content }) => {
       <div className="bg-[#4B6BFB] px-[10px] w-max  rounded-md text-white text-sm font-medium py-1 ">
         {title}
       </div>
-      <div className="text-white text-lg line-clamp-3 font-semibold">{content}</div>
+        <div className="text-white text-lg line-clamp-3 font-semibold">
+          {content}
+        </div>
     </div>
   );
 };

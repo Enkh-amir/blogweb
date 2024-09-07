@@ -33,7 +33,7 @@ export const BlogPost = ({ BlogPostCardData }) => {
 
   const handleFilterButtonClick = (category) => {
     setSelectedFilters(category);
-    setVisible(9); // Reset visible count when a filter is selected
+    setVisible(9);
   };
 
   const showMoreItems = () => {
@@ -44,25 +44,27 @@ export const BlogPost = ({ BlogPostCardData }) => {
     <div className="w-[1216px] flex flex-col">
       <div className="flex flex-col gap-8">
         <div className="font-wsans font-bold text-2xl">All Anime</div>
-        <div className="flex justify-between">
-          <div className="flex gap-5">
-            {filters.map((category, idx) => (
-              <button
-                onClick={() => handleFilterButtonClick(category)}
-                className={`button ${
-                  selectedFilters === category ? "active" : ""
-                } text-[#495057] font-wsans font-bold text-xs hover:text-[#D4A373]`}
-                key={`filters-${idx}`}
-              >
-                {category}
+        <div className="px-3 glass-menu">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-5">
+              {filters.map((category, idx) => (
+                <button
+                  onClick={() => handleFilterButtonClick(category)}
+                  className={`button ${
+                    selectedFilters === category ? "active" : ""
+                  } text-[black] font-wsans font-bold text-xs hover:text-[#D4A373]`}
+                  key={`filters-${idx}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <Link href="/blog-list">
+              <button className="text-[black] font-wsans font-bold text-xs cate-button">
+                View All
               </button>
-            ))}
+            </Link>
           </div>
-          <Link href="/blog-list">
-            <button className="text-[#495057] font-wsans font-bold text-xs cate-button">
-              View All
-            </button>
-          </Link>
         </div>
         <div className="items w-[1222px] flex flex-wrap gap-5">
           {filteredItems.slice(0, visible).map((item) => (
@@ -95,7 +97,7 @@ export const BlogPost = ({ BlogPostCardData }) => {
           <div className="w-full flex justify-center mt-11">
             {visible < filteredItems.length && (
               <button
-                className="px-5 py-3 text-[#696A75] font-wsans text-base border-[1px] rounded-md border-custom-border load-more"
+                className="px-5 py-3 text-[white] font-wsans text-base border-[2px] rounded-md border-white load-more"
                 onClick={showMoreItems}
               >
                 Load More
