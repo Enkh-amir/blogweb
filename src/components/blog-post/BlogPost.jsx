@@ -71,11 +71,11 @@ export const BlogPost = ({ BlogPostCardData }) => {
             <Link href={`/${item.id}`} key={item.id}>
               <div className="">
                 <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden bg-white border-[#E8E8EA]">
-                  <div className="img-container">
+                  <div className="img-container rounded-md relative">
                     <img
                       src={item?.cover_image}
                       alt={item?.title}
-                      className="w-[360px] h-[240px] read-more-img rounded-md object-cover"
+                      className="w-full h-full overflow-hidden  read-more-img rounded-md object-cover"
                     />
                   </div>
                   <div className="flex flex-col p-2 w-[344px] h-full justify-between">

@@ -1,4 +1,4 @@
-import { FooterHome } from "@/components/footer/FooterHome";
+import { FooterPage } from "@/components/footer/FooterPage";
 import { Header } from "@/components/header/Header";
 import { SinglePostPage } from "@/components/pages/SinglePost";
 import { useRouter } from "next/router";
@@ -19,7 +19,7 @@ const SinglePost = () => {
     <div className="flex flex-col items-center gap-[90px] ">
       <Header datas={article} />
       <SinglePostPage />
-      <FooterHome />
+      <FooterPage />
     </div>
   );
 };

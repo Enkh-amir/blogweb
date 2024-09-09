@@ -1,4 +1,4 @@
-import { FooterHome } from "@/components/footer/FooterHome";
+import { FooterPage } from "@/components/footer/FooterPage";
 import { Header } from "@/components/header/Header";
 import Link from "next/link";
 
@@ -25,7 +25,7 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-      <FooterHome />
+      <FooterPage />
     </div>
   );
 }

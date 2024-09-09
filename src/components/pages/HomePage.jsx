@@ -1,11 +1,12 @@
 import { BlogPost } from "../blog-post/BlogPost";
 import { Carousel } from "../carousel/Carousel";
-import { FooterHome } from "../footer/FooterHome";
+import { FooterPage } from "../footer/FooterPage";
+// import { FooterHome } from "../footer/FooterPage";
 import { Header } from "../header/Header";
 import { TrendingCards } from "../trending/TrendingCards";
 import { useEffect, useState } from "react";
 
-export default function   HomePage() {
+export default function HomePage() {
   const [article, setArticle] = useState([]);
 
   const fetchData = () => {
@@ -23,7 +24,7 @@ export default function   HomePage() {
       <Carousel slides={article.slice(20, 30)} />
       <TrendingCards AnimeCard={article.slice(9, 13)} />
       <BlogPost BlogPostCardData={article} />
-      <FooterHome />
+      <FooterPage />
     </div>
   );
 }

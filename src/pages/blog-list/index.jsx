@@ -1,4 +1,4 @@
-import { FooterHome } from "@/components/footer/FooterHome";
+import { FooterPage } from "@/components/footer/FooterPage";
 import { Header } from "@/components/header/Header";
 import { BlogListing } from "@/components/pages/BlogListing";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ export default function BlogCard() {
       </div>
       <div className="w-full flex flex-col items-center gap-20">
         <BlogListing />
-        <FooterHome />
+        <FooterPage />
       </div>
     </div>
   );

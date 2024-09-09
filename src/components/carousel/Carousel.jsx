@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 export const Carousel = ({ slides = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,7 +20,13 @@ export const Carousel = ({ slides = [] }) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", options);
   };
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 4000);
 
+    return () => clearInterval(intervalId);
+  }, [slides.length]);
   return (
     <div className="container flex  justify-center items-center flex-col">
       <Link

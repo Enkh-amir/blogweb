@@ -1,4 +1,4 @@
-import { FooterHome } from "@/components/footer/FooterHome";
+import { FooterPage } from "@/components/footer/FooterPage";
 import { Header } from "@/components/header/Header";
 import { ContactUsPart } from "@/components/pages/ContactUs";
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ export default function ContactUs() {
       <div className="flex justify-center items-center w-full">
         <ContactUsPart />
       </div>
-      <FooterHome />
+      <FooterPage />
     </div>
   );
 }
