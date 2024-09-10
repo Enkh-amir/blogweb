@@ -40,11 +40,11 @@ export const Carousel = ({ slides = [] }) => {
           }}
           className="h-[600px] w-[1216px] rounded-xl duration-200 flex p-3 items-end"
         >
-          <div className="shadow-md rounded-xl w-[50%] h-[40%] bg-[#FFF] flex flex-col p-10 gap-5 ">
+          <div className="shadow-md rounded-xl w-[50%] h-[45%] bg-[#FFF] flex flex-col justify-between p-10 ">
             <div className="bg-[#4B6BFB] px-[10px] w-max rounded-md text-white text-sm font-medium py-1 ">
               {slides[currentIndex]?.tag_list[0]}
             </div>
-            <div className="text-[#181A2A] text-4xl font-semibold ">
+            <div className="text-[#181A2A] text-4xl font-semibold  line-clamp-2">
               {slides[currentIndex]?.title}
             </div>
             <div className="text-[#97989F] text-base ">

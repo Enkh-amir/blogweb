@@ -23,6 +23,13 @@ module.exports = {
       plugins: [
         function ({ addUtilities }) {
           addUtilities({
+            ".line-clamp-2": {
+              display: "-webkit-box",
+              WebkitLineClamp: "2",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            },
             ".line-clamp-3": {
               display: "-webkit-box",
               WebkitLineClamp: "3",
@@ -37,3 +44,4 @@ module.exports = {
   },
   plugins: [],
 };
+

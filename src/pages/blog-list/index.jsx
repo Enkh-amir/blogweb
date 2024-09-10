@@ -7,7 +7,7 @@ export default function BlogCard() {
   const [article, setArticle] = useState([]);
 
   const fetchData = () => {
-    fetch(`https://dev.to/api/articles`)
+    fetch(`https://dev.to/api/articles?per_page=100`)
       .then((response) => response.json())
       .then((data) => setArticle(data));
   };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BlogIcon } from "../../../public/svg/BlogIcon";
 import Link from "next/link";
 import { HeaderLogo } from "../../../public/svg/HeaderLogo";
@@ -6,6 +6,8 @@ import { HeaderLogo } from "../../../public/svg/HeaderLogo";
 export const Header = ({ datas = [] }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const resultsRef = useRef(null);
 
   useEffect(() => {
     if (searchQuery.trim() === "") {
@@ -17,7 +19,21 @@ export const Header = ({ datas = [] }) => {
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setSearchResults(results);
+    setShowResults(true);
   }, [searchQuery, datas]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (resultsRef.current && !resultsRef.current.contains(event.target)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="w-full flex justify-center glass">
@@ -38,7 +54,10 @@ export const Header = ({ datas = [] }) => {
             </button>
           </Link>
         </div>
-        <div className="py-2 px-4 justify-center gap-3 items-center rounded-md bg-[#F4F4F5] flex">
+        <div
+          ref={resultsRef}
+          className="py-2 px-4 justify-center gap-3 items-center rounded-md bg-[#F4F4F5] flex"
+        >
           <input
             type="text"
             className="bg-[#F4F4F5] outline-none"
@@ -49,7 +68,7 @@ export const Header = ({ datas = [] }) => {
           <button>
             <HeaderLogo />
           </button>
-          {searchResults.length > 0 && (
+          {showResults && searchResults.length > 0 && (
             <div className="absolute top-24 max-h-[500px] overflow-scroll max-w-md mt-2 bg-white border rounded-md shadow-lg z-10">
               <ul>
                 {searchResults.length === 0 ? (
@@ -58,7 +77,7 @@ export const Header = ({ datas = [] }) => {
                   searchResults.map((result) => (
                     <li
                       key={result.id}
-                      className="py-2 px-4  hover:bg-gray-200"
+                      className="py-2 px-4 hover:bg-gray-200"
                     >
                       <Link href={`/${result.id}`}>
                         <div>{result.title}</div>

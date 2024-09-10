@@ -73,8 +73,8 @@ export const BlogPost = ({ BlogPostCardData }) => {
                 <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden bg-white border-[#E8E8EA]">
                   <div className="img-container rounded-md relative">
                     <img
-                      src={item?.cover_image}
-                      alt={item?.title}
+                      src={item?.cover_image || "no-image.jpg"}
+                      alt={item?.title || "no title"}
                       className="w-full h-full overflow-hidden  read-more-img rounded-md object-cover"
                     />
                   </div>
@@ -86,7 +86,7 @@ export const BlogPost = ({ BlogPostCardData }) => {
                       {item?.title}
                     </div>
                     <div className="font-wsans font-normal text-base text-[#97989F]">
-                      {formatDate(item?.published_at)}
+                      {formatDate(item?.published_at)} 
                     </div>
                   </div>
                 </div>

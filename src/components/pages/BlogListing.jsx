@@ -10,7 +10,7 @@ export const BlogListing = () => {
     return date.toLocaleDateString("en-US", options);
   };
   const fetchData = () => {
-    fetch(`https://dev.to/api/articles`)
+    fetch(`https://dev.to/api/articles?per_page=100`)
       .then((response) => response.json())
       .then((data) => setArticle(data));
   };
@@ -29,7 +29,7 @@ export const BlogListing = () => {
           <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden border-[#E8E8EA]">
             <div className="img-container">
               <img
-                src={item.cover_image}
+                src={item.cover_image || "no-image.jpg"}
                 alt={item.title}
                 className="w-[360px] h-[240px] read-more-img rounded-md object-cover"
               />
