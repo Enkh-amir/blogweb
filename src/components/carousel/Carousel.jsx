@@ -30,7 +30,7 @@ export const Carousel = ({ slides = [] }) => {
   return (
     <div className="container flex  justify-center items-center flex-col">
       <Link
-        href={`/${slides[currentIndex]?.id}`}
+        href={`/blog-list/${slides[currentIndex]?.id}`}
         key={slides[currentIndex]?.id}
       >
         <div

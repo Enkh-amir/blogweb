@@ -8,7 +8,7 @@ export const TrendingCards = ({ AnimeCard = [] }) => {
       <div className="font-wsans font-bold text-2xl">Trending</div>
       <div className="flex w-full justify-between">
         {AnimeCard.map((card, index) => (
-          <Link href={`/${card.id}`} key={card.id}>
+          <Link href={`/blog-list/${card.id}`} key={card.id}>
             <TrendingCard
               key={index}
               title={card?.tag_list[0] || "No Tag"}

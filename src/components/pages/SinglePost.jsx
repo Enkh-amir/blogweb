@@ -12,7 +12,7 @@ export const SinglePostPage = () => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [router.query.id]);
 
 
   return (

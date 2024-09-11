@@ -68,7 +68,7 @@ export const BlogPost = ({ BlogPostCardData }) => {
         </div>
         <div className="items w-[1222px] flex flex-wrap gap-5">
           {filteredItems.slice(0, visible).map((item) => (
-            <Link href={`/${item.id}`} key={item.id}>
+            <Link href={`blog-list/${item.id}`} key={item.id}>
               <div className="">
                 <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden bg-white border-[#E8E8EA]">
                   <div className="img-container rounded-md relative">

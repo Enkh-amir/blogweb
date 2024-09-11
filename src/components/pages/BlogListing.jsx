@@ -25,7 +25,7 @@ export const BlogListing = () => {
   return (
     <div className="w-[1222px] flex flex-wrap gap-5">
       {article.slice(0, visible).map((item, idx) => (
-        <Link href={`/${item.id}`} key={item.id}>
+        <Link href={`blog-list/${item.id}`} key={item.id}>
           <div className="w-max h-[478px] flex flex-col gap-4 p-4 rounded-xl border-[1px] overflow-hidden border-[#E8E8EA]">
             <div className="img-container">
               <img

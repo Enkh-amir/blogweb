@@ -2,24 +2,26 @@ import { useState, useEffect, useRef } from "react";
 import { BlogIcon } from "../../../public/svg/BlogIcon";
 import Link from "next/link";
 import { HeaderLogo } from "../../../public/svg/HeaderLogo";
+import { usePathname } from "next/navigation";
 
 export const Header = ({ datas = [] }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const resultsRef = useRef(null);
-
   useEffect(() => {
     if (searchQuery.trim() === "") {
       setSearchResults([]);
+      setShowResults(false);
       return;
     }
 
     const results = datas.filter((item) =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     setSearchResults(results);
-    setShowResults(true);
+    setShowResults(results.length > 0);
   }, [searchQuery, datas]);
 
   useEffect(() => {
@@ -34,6 +36,7 @@ export const Header = ({ datas = [] }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
 
   return (
     <div className="w-full flex justify-center glass">
@@ -56,7 +59,7 @@ export const Header = ({ datas = [] }) => {
         </div>
         <div
           ref={resultsRef}
-          className="py-2 px-4 justify-center gap-3 items-center rounded-md bg-[#F4F4F5] flex"
+          className="py-2 px-4 justify-center gap-3 items-center rounded-md bg-[#F4F4F5] flex relative" // Added relative class
         >
           <input
             type="text"
@@ -68,18 +71,15 @@ export const Header = ({ datas = [] }) => {
           <button>
             <HeaderLogo />
           </button>
-          {showResults && searchResults.length > 0 && (
+          {showResults && (
             <div className="absolute top-24 max-h-[500px] overflow-scroll max-w-md mt-2 bg-white border rounded-md shadow-lg z-10">
               <ul>
                 {searchResults.length === 0 ? (
                   <li className="py-2 px-4">No results found</li>
                 ) : (
                   searchResults.map((result) => (
-                    <li
-                      key={result.id}
-                      className="py-2 px-4 hover:bg-gray-200"
-                    >
-                      <Link href={`/${result.id}`}>
+                    <li key={result.id} className="py-2 px-4 hover:bg-gray-200">
+                      <Link href={`/blog-list/${result.id}`} key={result.id}>
                         <div>{result.title}</div>
                       </Link>
                     </li>
