@@ -9,7 +9,7 @@ export const Header = ({ datas = [] }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const resultsRef = useRef(null);
-  const path = usePathname()
+  const path = usePathname();
   useEffect(() => {
     if (searchQuery.trim() === "") {
       setSearchResults([]);
@@ -23,7 +23,11 @@ export const Header = ({ datas = [] }) => {
 
     setSearchResults(results);
     setShowResults(results.length > 0);
-  }, [searchQuery, datas]);
+  }, [searchQuery, datas]); 
+
+  useEffect(() => {
+    setShowResults(false);
+  }, [path]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -37,7 +41,6 @@ export const Header = ({ datas = [] }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
- 
 
   return (
     <div className="w-full flex justify-center glass">
