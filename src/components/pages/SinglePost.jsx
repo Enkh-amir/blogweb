@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export const SinglePostPage = () => {
   const [article, setArticle] = useState([]);
   const router = useRouter();
-
+  const [showData, setShowData] = useState(false)
   const fetchData = () => {
     fetch(`https://dev.to/api/articles/${router.query.id}`)
       .then((response) => response.json())
@@ -12,6 +12,7 @@ export const SinglePostPage = () => {
   };
   useEffect(() => {
     fetchData();
+    setShowData(true)
   }, [router.query.id]);
 
 

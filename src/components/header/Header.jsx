@@ -9,6 +9,7 @@ export const Header = ({ datas = [] }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const resultsRef = useRef(null);
+  const path = usePathname()
   useEffect(() => {
     if (searchQuery.trim() === "") {
       setSearchResults([]);
@@ -36,7 +37,7 @@ export const Header = ({ datas = [] }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
+ 
 
   return (
     <div className="w-full flex justify-center glass">

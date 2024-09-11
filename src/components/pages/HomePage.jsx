@@ -9,11 +9,6 @@ export default function HomePage() {
   const [article, setArticle] = useState([]);
   const [articleForSearch, setArticleForSearch] = useState([]);
 
-  const fetchSearchData = () => {
-    fetch(`https://dev.to/api/articles?per_page=100`)
-      .then((response) => response.json())
-      .then((data) => setArticleForSearch(data));
-  };
   const fetchData = () => {
     fetch(`https://dev.to/api/articles?per_page=100`)
       .then((response) => response.json())
@@ -21,12 +16,11 @@ export default function HomePage() {
   };
   useEffect(() => {
     fetchData();
-    fetchSearchData();
   }, []);
 
   return (
     <div className="flex flex-col items-center gap-24 relative min-h-screen">
-      <Header datas={articleForSearch} />
+      <Header datas={article} />
       <Carousel slides={article.slice(20, 30)} />
       <TrendingCards AnimeCard={article.slice(9, 13)} />
       <BlogPost BlogPostCardData={article} />
