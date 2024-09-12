@@ -9,11 +9,19 @@ export default function HomePage() {
   const [article, setArticle] = useState([]);
   const [articleForSearch, setArticleForSearch] = useState([]);
 
-  const fetchData = () => {
-    fetch(`https://dev.to/api/articles?per_page=100`)
-      .then((response) => response.json())
-      .then((data) => setArticle(data));
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://dev.to/api/articles?per_page=100");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setArticle(data);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
   };
+
   useEffect(() => {
     fetchData();
   }, []);

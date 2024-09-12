@@ -23,19 +23,19 @@ export const Header = ({ datas = [] }) => {
 
     setSearchResults(results);
     setShowResults(results.length > 0);
-  }, [searchQuery, datas]); 
+  }, [searchQuery, datas]);
 
   useEffect(() => {
     setShowResults(false);
+    setSearchQuery("");
   }, [path]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (resultsRef.current && !resultsRef.current.contains(event.target)) {
+      if (!resultsRef.current.contains(event.target)) {
         setShowResults(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -76,7 +76,7 @@ export const Header = ({ datas = [] }) => {
             <HeaderLogo />
           </button>
           {showResults && (
-            <div className="absolute top-24 max-h-[500px] overflow-scroll max-w-md mt-2 bg-white border rounded-md shadow-lg z-10">
+            <div className="absolute top-16 max-h-[500px] overflow-scroll max-w-md mt-2 bg-white border rounded-md shadow-lg z-10">
               <ul>
                 {searchResults.length === 0 ? (
                   <li className="py-2 px-4">No results found</li>
