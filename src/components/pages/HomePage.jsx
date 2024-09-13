@@ -30,7 +30,7 @@ export default function HomePage() {
     <div className="flex flex-col items-center gap-24 relative min-h-screen">
       <Header datas={article} />
       <Carousel slides={article.slice(20, 30)} />
-      <TrendingCards AnimeCard={article.slice(9, 13)} />
+      <TrendingCards blog={article.slice(36, 40)} />
       <BlogPost BlogPostCardData={article} />
       <FooterPage />
     </div>
